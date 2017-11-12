@@ -1,0 +1,41 @@
+name: concur-react-semantic-ui
+version: '0.1.0.0'
+description: Semantic UI Integration for Concur-React
+category: Web
+author: Anupam Jain
+maintainer: ajnsit@gmail.com
+copyright: 2017 Anupam Jain
+license: BSD3
+homepage: https://github.com/concurhaskell/concur-react-semantic-ui
+extra-source-files:
+- README.md
+dependencies:
+- base
+- stm >=2.4
+- concur-core
+- concur-react
+library:
+  source-dirs: src
+  ghc-options:
+  - -Wall
+  - -ferror-spans
+  exposed-modules:
+  - Concur.React.SemanticUI.Components
+  - Concur.React.SemanticUI.Components.Button
+  - Concur.React.SemanticUI.Components.Icon
+  - Concur.React.SemanticUI.FFI
+  dependencies:
+  - mtl >=2.2
+  - transformers >=0.5
+  - free >=4.12
+  - data-default >=0.7
+  when:
+  - condition: impl(ghcjs -any)
+    then:
+      source-dirs: src-ghcjs
+      dependencies:
+      - ghcjs-base
+    else:
+      source-dirs: src-ghc
+      dependencies:
+      - ghcjs-base-stub >=0.1
